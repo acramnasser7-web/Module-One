@@ -1,0 +1,32 @@
+[
+  {
+    "code": "LONDON001",
+    "name": "London Adventure",
+    "length": "7 days",
+    "start": "2026-06-15",
+    "resort": "The Londoner",
+    "perPerson": "$2500",
+    "image": "/images/trip1.jpg",
+    "description": "Explore London's historic landmarks and culture."
+  },
+  {
+    "code": "BEACH001",
+    "name": "Beach Escape",
+    "length": "5 days",
+    "start": "2026-07-01",
+    "resort": "Ocean Breeze Resort",
+    "perPerson": "$1800",
+    "image": "/images/trip2.jpg",
+    "description": "Relax on beautiful tropical beaches."
+  },
+  {
+    "code": "MOUNTAIN001",
+    "name": "Mountain Expedition",
+    "length": "10 days",
+    "start": "2026-08-10",
+    "resort": "High Peak Lodge",
+    "perPerson": "$3200",
+    "image": "/images/trip3.jpg",
+    "description": "Adventure through scenic mountain trails."
+  }
+]
