@@ -1,0 +1,19 @@
+<div>
+  <div class="row">
+    <div class="col-12">
+      <h2>Trips</h2>
+      <small>{{ message }}</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-end mb-3">
+      <a routerLink="/add-trip" class="btn btn-primary">Add Trip</a>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <app-trip-card
+      *ngFor="let trip of trips"
+      [trip]="trip">
+    </app-trip-card>
+  </div>
+</div>

@@ -4,9 +4,13 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var hbs = require("hbs");
+var cors = require("cors");
 var db = require("./app_server/models/db");
 
 var app = express();
+
+// Allow Angular SPA on port 4200 to reach the API
+app.use(cors());
 
 // MVC Routes
 var indexRouter = require("./app_server/routes/index");

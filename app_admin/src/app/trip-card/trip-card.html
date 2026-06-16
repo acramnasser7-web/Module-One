@@ -1,0 +1,19 @@
+<div class="col">
+  <div class="card h-100">
+    <img [src]="trip.image" class="card-img-top trip-card-img" [alt]="trip.name" [title]="trip.name">
+    <div class="card-body">
+      <h5 class="card-title">{{ trip.name }}</h5>
+      <p class="card-text text-muted">
+        <strong>Code:</strong> {{ trip.code }}<br>
+        <strong>Resort:</strong> {{ trip.resort }}<br>
+        <strong>Start:</strong> {{ trip.start }}<br>
+        <strong>Length:</strong> {{ trip.length }}<br>
+        <strong>Per Person:</strong> ${{ trip.perPerson }}
+      </p>
+      <p class="card-text">{{ trip.description }}</p>
+    </div>
+    <div class="card-footer text-end">
+      <button type="button" class="btn btn-warning btn-sm" (click)="onEditTrip()">Edit Trip</button>
+    </div>
+  </div>
+</div>

@@ -27,7 +27,68 @@ var tripsFindCode = async function(req, res) {
   }
 };
 
+// POST /api/trips  -- create a new trip
+var tripsAddTrip = async function(req, res) {
+  try {
+    var trip = await Trip.create({
+      code: req.body.code,
+      name: req.body.name,
+      length: req.body.length,
+      start: req.body.start,
+      resort: req.body.resort,
+      perPerson: req.body.perPerson,
+      image: req.body.image,
+      description: req.body.description
+    });
+    return res.status(201).json(trip);
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
+};
+
+// PUT /api/trips/:tripCode  -- update a trip by code
+var tripsUpdateTrip = async function(req, res) {
+  try {
+    var trip = await Trip.findOneAndUpdate(
+      { code: req.params.tripCode },
+      {
+        code: req.body.code,
+        name: req.body.name,
+        length: req.body.length,
+        start: req.body.start,
+        resort: req.body.resort,
+        perPerson: req.body.perPerson,
+        image: req.body.image,
+        description: req.body.description
+      },
+      { new: true, runValidators: true }
+    ).exec();
+    if (!trip) {
+      return res.status(404).json({ message: 'Trip not found.' });
+    }
+    return res.status(200).json(trip);
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
+};
+
+// DELETE /api/trips/:tripCode  -- delete a trip by code
+var tripsDeleteTrip = async function(req, res) {
+  try {
+    var trip = await Trip.findOneAndDelete({ code: req.params.tripCode }).exec();
+    if (!trip) {
+      return res.status(404).json({ message: 'Trip not found.' });
+    }
+    return res.status(200).json({ message: 'Trip deleted successfully.' });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = {
   tripsList,
-  tripsFindCode
+  tripsFindCode,
+  tripsAddTrip,
+  tripsUpdateTrip,
+  tripsDeleteTrip
 };
