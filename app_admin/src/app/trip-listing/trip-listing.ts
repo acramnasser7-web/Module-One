@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-listing',
@@ -12,7 +13,10 @@ export class TripListing implements OnInit {
   trips: Trip[] = [];
   message: string = '';
 
-  constructor(private tripDataService: TripDataService) {}
+  constructor(
+    private tripDataService: TripDataService,
+    public authService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     this.getTrips();

@@ -12,7 +12,7 @@
       </p>
       <p class="card-text">{{ trip.description }}</p>
     </div>
-    <div class="card-footer text-end">
+    <div class="card-footer text-end" *ngIf="authService.isLoggedIn()">
       <button type="button" class="btn btn-warning btn-sm" (click)="onEditTrip()">Edit Trip</button>
     </div>
   </div>

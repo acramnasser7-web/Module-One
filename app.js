@@ -5,7 +5,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var hbs = require("hbs");
 var cors = require("cors");
+var passport = require("passport");
 var db = require("./app_server/models/db");
+
+require("./app_api/config/passport");
 
 var app = express();
 
@@ -29,6 +32,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize());
 
 // Static files
 app.use(express.static(path.join(__dirname, "public")));

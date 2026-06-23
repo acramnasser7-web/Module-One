@@ -5,7 +5,7 @@
       <small>{{ message }}</small>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="authService.isLoggedIn()">
     <div class="col-12 text-end mb-3">
       <a routerLink="/add-trip" class="btn btn-primary">Add Trip</a>
     </div>

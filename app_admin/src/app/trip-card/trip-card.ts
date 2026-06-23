@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
 import { StorageService } from '../services/storage';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-card',
@@ -14,7 +15,8 @@ export class TripCard {
 
   constructor(
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
+    public authService: AuthenticationService
   ) {}
 
   onEditTrip(): void {
