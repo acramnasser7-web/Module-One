@@ -1,25 +1,31 @@
 
 {{> header}}
 
-<h1>{{title}}</h1>
+<div id="contents">
+  <div class="box">
+    <div>
+      <div class="body">
+        <h1>{{title}}</h1>
+        <p>Browse our curated travel packages below. Contact us to reserve your spot today!</p>
 
-<div class="trip-container">
+        <div class="trip-container">
+          {{#each trips}}
+          <div class="trip-card">
+            <img src="{{image}}" alt="{{name}}" width="300">
+            <h2>{{name}}</h2>
+            <p><strong>Resort:</strong> {{resort}}</p>
+            <p><strong>Start Date:</strong> {{start}}</p>
+            <p><strong>Length:</strong> {{length}}</p>
+            <p><strong>Price:</strong> ${{perPerson}} per person</p>
+            <p>{{description}}</p>
+            <a href="/contact?trip={{code}}" class="book-btn">Book Now</a>
+          </div>
+          {{/each}}
+        </div>
 
-{{#each trips}}
-<div class="trip-card">
-    <img src="{{image}}" alt="{{name}}" width="300">
-
-    <h2>{{name}}</h2>
-
-    <p><strong>Length:</strong> {{length}}</p>
-    <p><strong>Start Date:</strong> {{start}}</p>
-    <p><strong>Resort:</strong> {{resort}}</p>
-    <p><strong>Price:</strong> {{perPerson}}</p>
-
-    <p>{{description}}</p>
-</div>
-{{/each}}
-
+      </div>
+    </div>
+  </div>
 </div>
 
 {{> footer}}
