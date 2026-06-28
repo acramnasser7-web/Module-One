@@ -72,6 +72,16 @@ Initially, route handlers contained inline database logic. Refactoring moved all
 **4. Unprotected API → JWT Middleware**
 Adding authentication required minimal changes to existing trip routes: a single `jwtAuth` middleware function was inserted before `tripsAddTrip`, `tripsUpdateTrip`, and `tripsDeleteTrip`. The `GET` endpoints remain public so the customer-facing site can read trips without a token. This surgical change demonstrates the value of the controller/route separation established in the prior refactor.
 
+### Benefits of Reusable UI Components
+
+Every refactor above moved the project toward reusable components, and the benefits were concrete:
+
+- **Single source of truth**: Shared Handlebars partials (`header.hbs`, `footer.hbs`) and the Angular `TripCard` component mean the navigation bar or a trip tile is defined once. A change is made in one place and propagates everywhere, eliminating the duplicated markup that previously spanned seven HTML pages.
+- **Consistency**: Because the same component renders every trip, the customer site and admin SPA present a uniform look and behavior with no risk of pages drifting out of sync.
+- **Faster development and less code**: New screens are assembled from existing building blocks (`TripCard`, services, partials) rather than rewritten from scratch, so features ship faster with fewer lines to maintain.
+- **Easier testing and debugging**: A self-contained component such as `TripCard` or `TripDataService` can be tested and reasoned about in isolation, and a bug fixed there is fixed for every consumer at once.
+- **Separation of concerns**: Reusable Angular services (`TripDataService`, `AuthenticationService`) keep data-access logic out of components, so the UI and the API layer can evolve independently.
+
 ---
 
 ## Testing
